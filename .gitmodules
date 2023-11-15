@@ -1,0 +1,3 @@
+[submodule "composer-local-dev"]
+	path = composer-local-dev
+	url = ./composer-local-dev
