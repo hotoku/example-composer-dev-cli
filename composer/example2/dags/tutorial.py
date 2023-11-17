@@ -1,34 +1,3 @@
-# 動作確認
-
-## 環境を作成
-
-```shell
-$ composer-dev create \
-  --from-image-version composer-2.5.1-airflow-2.6.3 \
-  example
-```
-
-↑最低限の指定: その他のオプションはマニュアル参照
-
-- image-versionごとに、imageファイルを保存する。不要なバージョンで作るとディスクを食う: 5.4GB
-
-## 起動
-
-```shell
-$ composer-dev start example
-```
-
-- web uiのport
-- dagsディレクトリの場所を出力から確認
-
-デフォルトでは[http://localhost:8080](http://localhost:8080)でweb uiが起動
-
-## dag登録
-
-以下を、dagsの下に`tutorial.py`で保存。web uiをreloadでdagが登録されているのを確認。
-
-```python
-
 from datetime import datetime, timedelta
 from textwrap import dedent
 
@@ -111,39 +80,3 @@ with DAG(
     )
 
     t1 >> [t2, t3]
-```
-
-## 実行
-
-web uiの再生ボタン → 「Trigger DAG」
-
-## Airflowコマンドの実行
-
-```shell
-composer-dev run-airflow-cmd example <subcommand> <argument>
-```
-
-が基本形
-
-`composer dev run-airflow-cmd example` ...
-
-- `help` ヘルプ表示
-- `dags list` ダグ一覧
-- `dags trigger <ダグ名>` ダグ実行
-
-## 既存のcomposerから作成
-
-```shell
-composer-dev create example2 \
-    --from-source-environment pubtex-ai-mlops-job \
-    --location asia-northeast1 \
-    --project pubtex-ai-trial-dev-mlops-d2
-```
-
-全ての情報がコピーされる訳ではなく、以下のみがコピーされる。
-
-- イメージのバージョン（環境で使用されている Cloud Composer と Airflow のバージョン）。
-- 使用する環境にインストールされているカスタム PyPI パッケージのリスト。
-- 使用する環境に設定された環境変数の名前のコメント化されたリスト。
-
-結果、上記のコマンドでは、ほぼ空の設定がコピーされた。

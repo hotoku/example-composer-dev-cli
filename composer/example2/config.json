@@ -1,0 +1,8 @@
+{
+    "composer_image_version": "composer-2.4.1-airflow-2.5.3",
+    "composer_location": "asia-northeast1",
+    "composer_project_id": "pubtex-ai-trial-dev-mlops-d2",
+    "dags_path": "/Users/hotoku/projects/hotoku/example-composer-dev-cli/composer/example2/dags",
+    "dag_dir_list_interval": 10,
+    "port": 8080
+}
